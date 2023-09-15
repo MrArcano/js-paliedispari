@@ -1,3 +1,4 @@
+// -------------------------------------------------------------------------
 
 const btnPalCeck = document.getElementById("btn-pal-check");
 const resultTextPal = document.getElementById("result-text-pal");
@@ -18,6 +19,36 @@ btnPalCeck.addEventListener("click",function(){
   textInputPal.value = "";
 });
 
+// -------------------------------------------------------------------------
+
+const btnEvenOdd = document.getElementById("btn-result");
+const resultEvenOdd = document.getElementById("result-even-odd");
+
+btnEvenOdd.addEventListener("click",function(){
+  const textInputEvenOdd = document.getElementById("inputEvenOdd").value;
+  const inputNumber = document.getElementById("even-odd-text").value;
+
+  console.log("inputNumber",inputNumber);
+  const nRandom = randomizer(1,5);
+  console.log("nRandom",nRandom);
+  const sumNumber = sum(parseInt(inputNumber),nRandom);
+  console.log("sumNumber",sumNumber);
+
+  console.log("textInputEvenOdd",textInputEvenOdd);
+  resultEvenOdd.classList.add("py-3");
+
+  if (isEven(sumNumber) == textInputEvenOdd){
+    resultEvenOdd.innerHTML = "Hai vinto!";
+    resultEvenOdd.classList.remove("bg-danger");
+    resultEvenOdd.classList.add("bg-success");
+  }else{
+    resultEvenOdd.innerHTML = "Hai Perso!";
+    resultEvenOdd.classList.remove("bg-success");
+    resultEvenOdd.classList.add("bg-danger");
+  }
+});
+
+// -------------------------------------------------------------------------
 
 // ------------------------------------
 // ------------  FUNCTION  ------------
