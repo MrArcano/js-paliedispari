@@ -1,11 +1,11 @@
 
-const parola = prompt("Inserisci una parola:");
+// const parola = prompt("Inserisci una parola:");
 
-if(isPalindroma(parola)){
-  console.log("Parola Palindroma");
-}else{
-  console.log("Parola non Palindroma");
-}
+// if(isPalindroma(parola)){
+//   console.log("Parola Palindroma");
+// }else{
+//   console.log("Parola non Palindroma");
+// }
 
 // ------------------------------------
 // ------------  FUNCTION  ------------
@@ -67,4 +67,36 @@ function isPalindroma2(parola){
   }
 
   return result;
+}
+
+// ------------------------------------
+// ------------  FUNCTION  ------------
+// ----------  PARI/DISPARI  ----------
+// ------------------------------------
+
+console.log(isEven(sum(5,3)));
+
+
+/**
+ * 
+ * @param {number} number 
+ * @returns 
+ */
+
+function isEven (number){
+  if(number %2 === 0){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+/**
+ * 
+ * @param {number} numberA 
+ * @param {number} numberB 
+ * @returns 
+ */
+function sum(numberA, numberB){
+  return numberA + numberB;
 }
