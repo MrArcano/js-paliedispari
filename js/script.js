@@ -4,19 +4,30 @@ const btnPalCeck = document.getElementById("btn-pal-check");
 const resultTextPal = document.getElementById("result-text-pal");
 
 btnPalCeck.addEventListener("click",function(){
-  const textInputPal = document.getElementById("palindrom-text");
-  resultTextPal.classList.add("py-3");
-  
-  if(isPalindroma(textInputPal.value)){
-    resultTextPal.innerHTML = "La parola è Palindroma";
-    resultTextPal.classList.remove("bg-danger");
-    resultTextPal.classList.add("bg-success");
+  let isDataCorrect = false; 
+
+  const textInputPal = document.getElementById("palindrom-text").value;
+  console.log(textInputPal.length); 
+  if(textInputPal.length > 0){
+    isDataCorrect = true;
   }else{
-    resultTextPal.innerHTML = "La parola NON è Palindroma";
-    resultTextPal.classList.remove("bg-success");
-    resultTextPal.classList.add("bg-danger");
+    resultTextPal.innerHTML = `
+      <p class="text-center bg-danger text-white">Inserire dati corretti!</p>
+      `;
   }
-  textInputPal.value = "";
+  
+  if(isDataCorrect){
+    // Stampo se palindroma o meno
+    if(isPalindroma(textInputPal)){
+      resultTextPal.innerHTML = `
+      <p class="text-center bg-success text-white" >${textInputPal} - è Palindroma</p>
+      `;
+    }else{
+      resultTextPal.innerHTML = `
+      <p class="text-center bg-danger text-white" >${textInputPal} - NON è Palindroma</p>
+      `;
+    }
+  }
 });
 
 // -------------------------------------------------------------------------
@@ -25,26 +36,41 @@ const btnEvenOdd = document.getElementById("btn-result");
 const resultEvenOdd = document.getElementById("result-even-odd");
 
 btnEvenOdd.addEventListener("click",function(){
+  let isDataCorrect = false;
+
   const textInputEvenOdd = document.getElementById("inputEvenOdd").value;
   const inputNumber = document.getElementById("even-odd-text").value;
 
-  console.log("inputNumber",inputNumber);
-  const nRandom = randomizer(1,5);
-  console.log("nRandom",nRandom);
-  const sumNumber = sum(parseInt(inputNumber),nRandom);
-  console.log("sumNumber",sumNumber);
-
-  console.log("textInputEvenOdd",textInputEvenOdd);
-  resultEvenOdd.classList.add("py-3");
-
-  if (isEven(sumNumber) == textInputEvenOdd){
-    resultEvenOdd.innerHTML = "Hai vinto!";
-    resultEvenOdd.classList.remove("bg-danger");
-    resultEvenOdd.classList.add("bg-success");
+  // Controllo se vengono inseriti dati validi
+  if ((inputNumber>=1 && inputNumber <= 5) && parseInt(textInputEvenOdd) >= 0){
+    isDataCorrect = true
   }else{
-    resultEvenOdd.innerHTML = "Hai Perso!";
-    resultEvenOdd.classList.remove("bg-success");
-    resultEvenOdd.classList.add("bg-danger");
+    resultEvenOdd.innerHTML = `
+      <p class="text-center bg-danger text-white">Inserire dati corretti!</p>
+      `;
+  }
+
+
+  if (isDataCorrect){
+    const nRandom = randomizer(1,5);
+    const sumNumber = sum(parseInt(inputNumber),nRandom);
+
+    // Stampo i dati creati/calcolati
+    resultEvenOdd.innerHTML = `
+    <p class="text-center border rounded">Numero Rnd CPU: ${nRandom}</p>
+    <p class="text-center border rounded">La somma è: ${sumNumber}</p>
+    `;
+  
+    // Stampo se hai vinto o perso
+    if (isEven(sumNumber) == textInputEvenOdd){
+      resultEvenOdd.innerHTML += `
+      <p class="text-center bg-success text-white">Hai vinto!</p>
+      `;
+    }else{
+      resultEvenOdd.innerHTML += `
+      <p class="text-center bg-danger text-white">Hai perso!</p>
+      `;
+    }
   }
 });
 
