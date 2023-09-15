@@ -87,7 +87,7 @@ btnEvenOdd.addEventListener("click",function(){
  * @returns
  */
 
-// METODO 1
+// METODO 1 PALINDROMA
 function isPalindroma(parola){
   // richiamo la funziona per il reverse della stringa
   const parolaNuova = reverseString(parola);
@@ -106,6 +106,8 @@ function isPalindroma(parola){
  * @param {string} parola 
  * @returns 
  */
+
+// METODO 1 REVERSE STRING
 function reverseString(parola){
   let parolaNuova = "";
   for(let i = parola.length -1 ; i >= 0 ; i--){
@@ -113,6 +115,23 @@ function reverseString(parola){
   }
   return parolaNuova;
 }
+
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
+
+/**
+ * Restituisce l'inverso della stringa inserita
+ * @param {string} parola 
+ * @returns 
+ */
+
+// METODO 2 REVERSE STRING
+function reverseString2(parola){
+  return parola.split("").reverse().join("");
+}
+
+// ----------------------------------------------------------------
+
 
 // ----------------------------------------------------------------
 
