@@ -1,9 +1,8 @@
 // 1. Salviamo la parola inserita in una variabile
 
-// const parola = prompt("Inserisci una parola:");
+const parola = prompt("Inserisci una parola:").toLowerCase();
 
 // 2. creo un ciclo che cicla per la lunghezza della stringa
-const parola ="anna";
 let parolaNuova = "";
 
 
