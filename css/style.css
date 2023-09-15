@@ -1,0 +1,9 @@
+body{
+  background-color: darkkhaki;
+}
+
+.container-csm{
+  width: 50%;
+  max-width: 800px;
+  margin: 0 auto;
+}

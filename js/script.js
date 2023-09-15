@@ -1,11 +1,23 @@
 
-// const parola = prompt("Inserisci una parola:");
+const btnPalCeck = document.getElementById("btn-pal-check");
+const resultTextPal = document.getElementById("result-text-pal");
 
-// if(isPalindroma(parola)){
-//   console.log("Parola Palindroma");
-// }else{
-//   console.log("Parola non Palindroma");
-// }
+btnPalCeck.addEventListener("click",function(){
+  const textInputPal = document.getElementById("palindrom-text");
+  resultTextPal.classList.add("py-3");
+  
+  if(isPalindroma(textInputPal.value)){
+    resultTextPal.innerHTML = "La parola è Palindroma";
+    resultTextPal.classList.remove("bg-danger");
+    resultTextPal.classList.add("bg-success");
+  }else{
+    resultTextPal.innerHTML = "La parola NON è Palindroma";
+    resultTextPal.classList.remove("bg-success");
+    resultTextPal.classList.add("bg-danger");
+  }
+  textInputPal.value = "";
+});
+
 
 // ------------------------------------
 // ------------  FUNCTION  ------------
@@ -74,15 +86,11 @@ function isPalindroma2(parola){
 // ----------  PARI/DISPARI  ----------
 // ------------------------------------
 
-console.log(isEven(sum(5,3)));
-
-
 /**
- * 
+ * Restituisce true se pari, false se dispari
  * @param {number} number 
  * @returns 
  */
-
 function isEven (number){
   if(number %2 === 0){
     return true;
@@ -91,12 +99,27 @@ function isEven (number){
   }
 }
 
+// ----------------------------------------------------------------
+
 /**
- * 
+ * Restituisce la somma di due numeri
  * @param {number} numberA 
  * @param {number} numberB 
  * @returns 
  */
 function sum(numberA, numberB){
   return numberA + numberB;
+}
+
+// ----------------------------------------------------------------
+
+/**
+ * Restituisce un valore randomico compreso tra min e max estremi inclusi
+ * @param {number} min 
+ * @param {number} max 
+ * @returns 
+ */
+
+function randomizer(min , max){
+  return Math.floor(Math.random() * (max - min + 1) + min)
 }
