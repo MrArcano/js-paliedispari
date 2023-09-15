@@ -1,21 +1,70 @@
-// 1. Salviamo la parola inserita in una variabile
 
-const parola = prompt("Inserisci una parola:").toLowerCase();
+const parola = prompt("Inserisci una parola:");
 
-// 2. creo un ciclo che cicla per la lunghezza della stringa
-let parolaNuova = "";
-
-
-// - genero una nuova stringa componendola partendo dai caratteri finali verso l'inizio
-for(i = parola.length -1 ; i >= 0 ; i--){
-  parolaNuova += parola.charAt(i);
-  console.log(parolaNuova);
+if(isPalindroma(parola)){
+  console.log("Parola Palindroma");
+}else{
+  console.log("Parola non Palindroma");
 }
 
-// - comparo la stringa iniziale con quella nuova, se sono uguali la parola è palindroma e stampo il risultato
+// ------------------------------------
+// ------------  FUNCTION  ------------
+// -----------  PALINDROMA  -----------
+// ------------------------------------
 
-if(parola == parolaNuova){
-  console.log("La parole è palindroma");
-}else{
-  console.log("La parola non è palindroma");
+/**
+ * Inserisci una stringa, restituisce "true" o "false", se palindroma
+ * @param {string} parola 
+ * @returns
+ */
+
+// METODO 1
+function isPalindroma(parola){
+  // richiamo la funziona per il reverse della stringa
+  const parolaNuova = reverseString(parola);
+  // controllo se le due parole sono palindrome
+  if(parola.toLowerCase() === parolaNuova.toLowerCase()){
+    return true
+  }else{
+    return false
+  }
+}
+
+// ----------------------------------------------------------------
+
+/**
+ * Restituisce l'inverso della stringa inserita
+ * @param {string} parola 
+ * @returns 
+ */
+function reverseString(parola){
+  let parolaNuova = "";
+  for(let i = parola.length -1 ; i >= 0 ; i--){
+   parolaNuova += parola.charAt(i);
+  }
+  return parolaNuova;
+}
+
+// ----------------------------------------------------------------
+
+/**
+ * Inserisci una stringa, restituisce "true" o "false", se palindroma
+ * @param {string} parola 
+ * @returns 
+ */
+
+// METODO 2
+function isPalindroma2(parola){
+  let result = true;
+  let i = 0;
+
+  for (let i = 0 ; i < parola.length / 2; i++){
+    if(parola.charAt(i).toLowerCase() !== parola.charAt(parola.length - 1 - i).toLowerCase()){
+      result = false;
+    }else{
+      result = true;
+    }
+  }
+
+  return result;
 }
